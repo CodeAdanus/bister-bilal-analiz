@@ -1,25 +1,52 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta property="og:title" content="Ortadoğu'da Ateş Çemberi">
-<meta property="og:description" content="Ortadoğu'da yaşanan savaşın arkasındaki petrodolar gerçeği">
-<meta property="og:image" content="kapak-bg.png">
-
 <title>Ortadoğu'da Ateş Çemberi</title>
+
+<meta property="og:title" content="Ortadoğu'da Ateş Çemberi">
+<meta property="og:image" content="kapak-bg.png">
 
 <style>
 
 body{
+background:#0a0a0a;
 margin:0;
-background:black;
+font-family:Arial;
 }
 
-img{
+/* ebook container */
+
+.book{
+
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+
+}
+
+/* ebook page */
+
+.page{
+
+background:#000;
+margin-bottom:40px;
+box-shadow:0 0 40px rgba(0,0,0,0.8);
+border-radius:6px;
+overflow:hidden;
+
+}
+
+/* image */
+
+.page img{
+
 width:100%;
 display:block;
+
 }
 
 </style>
@@ -28,13 +55,33 @@ display:block;
 
 <body>
 
-<img src="kapak-bg.png">
+<div class="book">
 
+<div class="page">
+<img src="kapak-bg.png">
+</div>
+
+<div class="page">
 <img src="page1-bg.png">
+</div>
+
+<div class="page">
 <img src="page2-bg.png">
+</div>
+
+<div class="page">
 <img src="page3-bg.png">
+</div>
+
+<div class="page">
 <img src="page4-bg.png">
+</div>
+
+<div class="page">
 <img src="page5-bg.png">
+</div>
+
+</div>
 
 </body>
 </html>
