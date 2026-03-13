@@ -1,75 +1,98 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ortadoğu'da Ateş Çemberi</title>
+<title>Bister Bilal Analiz</title>
 
 <meta property="og:title" content="Ortadoğu'da Ateş Çemberi">
-<meta property="og:description" content="Petrodolar sisteminin Ortadoğu savaşları ile bağlantısı.">
+<meta property="og:description" content="Petrodolar sisteminin Ortadoğu üzerindeki etkisi">
 <meta property="og:image" content="https://codeadanus.github.io/bister-bilal-analiz/kapak-bg.png">
 <meta property="og:type" content="website">
 
 <style>
 
 body{
-background:#0b0b0b;
+background:#050505;
 margin:0;
 font-family:Arial;
 color:white;
 }
 
-.container{
-max-width:900px;
-margin:auto;
-padding:40px 20px;
-}
+/* kitap container */
 
 .reader{
-text-align:center;
+
+max-width:900px;
+margin:auto;
+padding:30px;
+
 }
 
-.reader img{
-width:100%;
-border-radius:6px;
-box-shadow:0 0 40px rgba(0,0,0,0.8);
-}
+/* header */
 
-.controls{
-margin-top:20px;
+.header{
+
 display:flex;
-justify-content:center;
-gap:20px;
+justify-content:space-between;
+color:#aaa;
+margin-bottom:10px;
+
+}
+
+/* kitap sayfa kutusu */
+
+.book{
+
+background:black;
+border-radius:6px;
+overflow:hidden;
+box-shadow:0 0 50px rgba(0,0,0,0.9);
+
+}
+
+.book img{
+
+width:100%;
+display:block;
+
+}
+
+/* footer */
+
+.footer{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:10px;
+
 }
 
 button{
+
 background:#111;
-border:none;
 color:white;
-padding:12px 20px;
-font-size:16px;
-border-radius:6px;
+border:none;
+padding:10px 20px;
+border-radius:5px;
 cursor:pointer;
+
 }
 
 button:hover{
+
 background:#333;
+
 }
 
-.page-info{
-margin-top:10px;
+.pageNum{
+
 color:#aaa;
-}
 
-.article{
-margin-top:60px;
-line-height:1.6;
-}
-
-.article h1{
-color:#ffcc00;
 }
 
 </style>
@@ -78,46 +101,28 @@ color:#ffcc00;
 
 <body>
 
-<div class="container">
-
 <div class="reader">
 
-<img id="pageImage" src="kapak-bg.png">
+<div class="header">
 
-<div class="controls">
-<button onclick="prevPage()">← Önceki</button>
-<button onclick="nextPage()">Sonraki →</button>
-</div>
-
-<div class="page-info">
-<span id="pageNum">1</span> / 6
-</div>
+<div>Bister Bilal</div>
+<div id="date"></div>
 
 </div>
 
-<div class="article">
+<div class="book">
 
-<h1>Ortadoğu'da Ateş Çemberi</h1>
+<img id="page" src="kapak-bg.png">
 
-<p>
-Son günlerde Ortadoğu'da yaşananlar ilk bakışta İran ve İsrail arasında bir savaş gibi görünüyor.
-</p>
+</div>
 
-<p>
-Fakat yangının haritasına dikkatlice bakınca asıl acıyı çekenin İran olmadığı görülüyor.
-</p>
+<div class="footer">
 
-<p>
-Alevlerin yükseldiği ülkeler: Suudi Arabistan, BAE, Katar, Kuveyt ve Bahreyn.
-</p>
+<button onclick="prev()">← Önceki</button>
 
-<p>
-Bu ülkelerin tamamı ABD'nin onlarca yıldır müttefiki.
-</p>
+<div class="pageNum" id="num">1 / 6</div>
 
-<p>
-Bu durum akıllara şu soruyu getiriyor: Bir ülke neden kendi müttefiklerinin bulunduğu coğrafyada ateşin büyümesine izin verir?
-</p>
+<button onclick="next()">Sonraki →</button>
 
 </div>
 
@@ -125,45 +130,60 @@ Bu durum akıllara şu soruyu getiriyor: Bir ülke neden kendi müttefiklerinin 
 
 <script>
 
-const pages = [
+/* tarih */
+
+const d = new Date()
+
+document.getElementById("date").innerText =
+d.getDate()+" "+
+["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"][d.getMonth()]+" "+
+d.getFullYear()
+
+/* sayfalar */
+
+const pages=[
+
 "kapak-bg.png",
 "page1-bg.png",
 "page2-bg.png",
 "page3-bg.png",
 "page4-bg.png",
 "page5-bg.png"
-];
 
-let current = 0;
+]
 
-const img = document.getElementById("pageImage");
-const num = document.getElementById("pageNum");
+let p=0
 
-function updatePage(){
-img.src = pages[current];
-num.textContent = current + 1;
+function update(){
+
+document.getElementById("page").src=pages[p]
+
+document.getElementById("num").innerText=
+(p+1)+" / "+pages.length
+
 }
 
-function nextPage(){
-if(current < pages.length-1){
-current++;
-updatePage();
-}
-}
+function next(){
 
-function prevPage(){
-if(current > 0){
-current--;
-updatePage();
-}
+if(p<pages.length-1){
+
+p++
+update()
+
 }
 
-document.addEventListener("keydown",function(e){
+}
 
-if(e.key==="ArrowRight"){nextPage();}
-if(e.key==="ArrowLeft"){prevPage();}
+function prev(){
 
-});
+if(p>0){
+
+p--
+update()
+
+}
+
+}
 
 </script>
 
