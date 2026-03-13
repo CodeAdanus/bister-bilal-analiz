@@ -7,31 +7,34 @@
 
 <title>Ortadoğu'da Ateş Çemberi</title>
 
+<meta property="og:title" content="Ortadoğu'da Ateş Çemberi">
+<meta property="og:description" content="Petrodolar sisteminin Ortadoğu savaşları ile bağlantısı.">
+<meta property="og:image" content="https://codeadanus.github.io/bister-bilal-analiz/kapak-bg.png">
+<meta property="og:type" content="website">
+
 <style>
 
 body{
-background:#0a0a0a;
+background:#0b0b0b;
 margin:0;
 font-family:Arial;
 color:white;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-height:100vh;
-overflow:hidden;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:40px 20px;
 }
 
 .reader{
-max-width:900px;
-width:100%;
 text-align:center;
 }
 
-.page img{
+.reader img{
 width:100%;
 border-radius:6px;
-box-shadow:0 0 40px rgba(0,0,0,0.9);
+box-shadow:0 0 40px rgba(0,0,0,0.8);
 }
 
 .controls{
@@ -43,22 +46,30 @@ gap:20px;
 
 button{
 background:#111;
-color:white;
 border:none;
-padding:10px 20px;
+color:white;
+padding:12px 20px;
 font-size:16px;
-cursor:pointer;
 border-radius:6px;
+cursor:pointer;
 }
 
 button:hover{
 background:#333;
 }
 
-.page-number{
+.page-info{
 margin-top:10px;
-font-size:14px;
 color:#aaa;
+}
+
+.article{
+margin-top:60px;
+line-height:1.6;
+}
+
+.article h1{
+color:#ffcc00;
 }
 
 </style>
@@ -67,21 +78,47 @@ color:#aaa;
 
 <body>
 
+<div class="container">
+
 <div class="reader">
 
-<div class="page">
 <img id="pageImage" src="kapak-bg.png">
-</div>
 
 <div class="controls">
-
 <button onclick="prevPage()">← Önceki</button>
 <button onclick="nextPage()">Sonraki →</button>
+</div>
+
+<div class="page-info">
+<span id="pageNum">1</span> / 6
+</div>
 
 </div>
 
-<div class="page-number">
-<span id="pageNum">1</span> / 6
+<div class="article">
+
+<h1>Ortadoğu'da Ateş Çemberi</h1>
+
+<p>
+Son günlerde Ortadoğu'da yaşananlar ilk bakışta İran ve İsrail arasında bir savaş gibi görünüyor.
+</p>
+
+<p>
+Fakat yangının haritasına dikkatlice bakınca asıl acıyı çekenin İran olmadığı görülüyor.
+</p>
+
+<p>
+Alevlerin yükseldiği ülkeler: Suudi Arabistan, BAE, Katar, Kuveyt ve Bahreyn.
+</p>
+
+<p>
+Bu ülkelerin tamamı ABD'nin onlarca yıldır müttefiki.
+</p>
+
+<p>
+Bu durum akıllara şu soruyu getiriyor: Bir ülke neden kendi müttefiklerinin bulunduğu coğrafyada ateşin büyümesine izin verir?
+</p>
+
 </div>
 
 </div>
@@ -121,15 +158,10 @@ updatePage();
 }
 }
 
-document.addEventListener("keydown", function(e){
+document.addEventListener("keydown",function(e){
 
-if(e.key === "ArrowRight"){
-nextPage();
-}
-
-if(e.key === "ArrowLeft"){
-prevPage();
-}
+if(e.key==="ArrowRight"){nextPage();}
+if(e.key==="ArrowLeft"){prevPage();}
 
 });
 
