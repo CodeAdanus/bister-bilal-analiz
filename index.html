@@ -7,46 +7,58 @@
 
 <title>Ortadoğu'da Ateş Çemberi</title>
 
-<meta property="og:title" content="Ortadoğu'da Ateş Çemberi">
-<meta property="og:image" content="kapak-bg.png">
-
 <style>
 
 body{
 background:#0a0a0a;
 margin:0;
 font-family:Arial;
-}
-
-/* ebook container */
-
-.book{
-
-max-width:900px;
-margin:auto;
-padding:40px 20px;
-
-}
-
-/* ebook page */
-
-.page{
-
-background:#000;
-margin-bottom:40px;
-box-shadow:0 0 40px rgba(0,0,0,0.8);
-border-radius:6px;
+color:white;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+height:100vh;
 overflow:hidden;
-
 }
 
-/* image */
+.reader{
+max-width:900px;
+width:100%;
+text-align:center;
+}
 
 .page img{
-
 width:100%;
-display:block;
+border-radius:6px;
+box-shadow:0 0 40px rgba(0,0,0,0.9);
+}
 
+.controls{
+margin-top:20px;
+display:flex;
+justify-content:center;
+gap:20px;
+}
+
+button{
+background:#111;
+color:white;
+border:none;
+padding:10px 20px;
+font-size:16px;
+cursor:pointer;
+border-radius:6px;
+}
+
+button:hover{
+background:#333;
+}
+
+.page-number{
+margin-top:10px;
+font-size:14px;
+color:#aaa;
 }
 
 </style>
@@ -55,33 +67,73 @@ display:block;
 
 <body>
 
-<div class="book">
+<div class="reader">
 
 <div class="page">
-<img src="kapak-bg.png">
+<img id="pageImage" src="kapak-bg.png">
 </div>
 
-<div class="page">
-<img src="page1-bg.png">
+<div class="controls">
+
+<button onclick="prevPage()">← Önceki</button>
+<button onclick="nextPage()">Sonraki →</button>
+
 </div>
 
-<div class="page">
-<img src="page2-bg.png">
-</div>
-
-<div class="page">
-<img src="page3-bg.png">
-</div>
-
-<div class="page">
-<img src="page4-bg.png">
-</div>
-
-<div class="page">
-<img src="page5-bg.png">
+<div class="page-number">
+<span id="pageNum">1</span> / 6
 </div>
 
 </div>
+
+<script>
+
+const pages = [
+"kapak-bg.png",
+"page1-bg.png",
+"page2-bg.png",
+"page3-bg.png",
+"page4-bg.png",
+"page5-bg.png"
+];
+
+let current = 0;
+
+const img = document.getElementById("pageImage");
+const num = document.getElementById("pageNum");
+
+function updatePage(){
+img.src = pages[current];
+num.textContent = current + 1;
+}
+
+function nextPage(){
+if(current < pages.length-1){
+current++;
+updatePage();
+}
+}
+
+function prevPage(){
+if(current > 0){
+current--;
+updatePage();
+}
+}
+
+document.addEventListener("keydown", function(e){
+
+if(e.key === "ArrowRight"){
+nextPage();
+}
+
+if(e.key === "ArrowLeft"){
+prevPage();
+}
+
+});
+
+</script>
 
 </body>
 </html>
