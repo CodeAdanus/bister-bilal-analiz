@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bister Bilal Analiz</title>
+  <meta property="og:title" content="Ortadoğu'da Ateş Çemberi: Görünen Savaşın Ardındaki Petrodolar Hesaplaşması">
+<meta property="og:description" content="ABD, Çin ve Körfez ülkeleri arasındaki görünmeyen petrodolar savaşının jeopolitik ve ekonomik analizi.">
+<meta property="og:image" content="https://bbamarketlab.github.io/bister-bilal-analiz/kapak-bg.png">
+<meta property="og:url" content="https://bbamarketlab.github.io/bister-bilal-analiz/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="BBA MarketLab Research">
+  <style>
+    :root{
+      --bg:#05070b;
+      --panel:#12141b;
+      --panel-2:#0d1016;
+      --text:#f2f2f2;
+      --muted:#c9ced8;
+      --gold:#d9b46b;
+      --gold-soft:rgba(217,180,107,.28);
+      --cyan:#7fd7ff;
+      --line:rgba(255,255,255,.08);
+      --shadow:0 0 40px rgba(217,180,107,.08);
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:radial-gradient(circle at top,#111827 0%,#07090d 45%,#030406 100%);color:var(--text);font-family:Georgia, "Times New Roman", serif;}
+    body{min-height:100vh}
+
+    .shell{
+      width:min(1280px, 96vw);
+      margin:32px auto;
+      display:grid;
+      grid-template-columns:88px 1fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    .side-nav{
+      background:rgba(13,16,22,.75);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px 10px;
+      box-shadow:var(--shadow);
+      position:sticky;
+      top:18px;
+      backdrop-filter:blur(10px);
+    }
+
+    .side-nav button{
+      width:40px;
+      height:40px;
+      margin:10px 0;
+      border-radius:50%;
+      border:2px solid #d9b46b44;
+      background:linear-gradient(180deg,#181818 0%, #232323 100%);
+      color:#ffe7b0;
+      font-weight:700;
+      font-size:18px;
+      cursor:pointer;
+      transition:.18s;
+      box-shadow:0 0 0 #0000;
+    }
+    .side-nav button.active{
+      background:linear-gradient(180deg,#ffe7b0 0%, #d9b46b 100%);
+      color:#181818;
+      border-color:#ffe7b0;
+      box-shadow:0 0 14px #ffe7b088, 0 0 2px #fff8;
+      filter: drop-shadow(0 0 8px #d9b46b55);
+    }
+
+    .viewer{
+      background:linear-gradient(180deg,rgba(28,24,45,.92),rgba(18,20,27,.96));
+      border:1.5px solid rgba(255,255,255,.13);
+      border-radius:32px;
+      box-shadow:
+        0 8px 48px 0 rgba(217,180,107,0.18),
+        0 2px 32px 0 rgba(127,215,255,0.10),
+        0 0 0 2.5px rgba(255,255,255,0.04),
+        0 0 120px 0 rgba(123,88,255,0.10);
+      overflow:hidden;
+      backdrop-filter: blur(10px) saturate(1.08);
+      position:relative;
+      transition:box-shadow .3s;
+    }
+
+    .viewer-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 26px 16px;
+      border-bottom:1.5px solid var(--line);
+      background:
+        linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,0)),
+        linear-gradient(90deg,rgba(217,180,107,0.06) 0%,rgba(255,255,255,0) 100%);
+      box-shadow:0 2px 18px 0 rgba(217,180,107,0.06);
+      backdrop-filter: blur(2.5px);
+    }
+
+    .brand-pill, .brand{
+      font-size:16px;
+      font-weight:600;
+      padding:8px 18px;
+      letter-spacing:0.6px;
+      border-radius:20px;
+      background:linear-gradient(135deg,#1a2a45,#0d1628);
+      border:1px solid rgba(255,210,120,0.35);
+      box-shadow:0 0 10px rgba(255,210,120,0.25);
+      color:#f7f8fb;
+      display:inline-flex;
+      align-items:center;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+    .date{
+      font-size:15px;
+      font-weight:500;
+      letter-spacing:0.5px;
+      color:#d9c7a0;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    .page-wrap{
+      padding:22px 22px 14px;
+    }
+
+    .page{
+      min-height:920px;
+      border-radius:24px;
+      overflow:hidden;
+      position:relative;
+      border:2.5px solid var(--gold-soft);
+      box-shadow:
+        0 0 0 2.5px #d9b46b33 inset,
+        0 0 32px #d9b46b33 inset,
+        0 0 60px #7fd7ff18 inset,
+        0 0 44px 0 rgba(217,180,107,0.13),
+        0 2px 24px 0 rgba(127,215,255,0.08);
+      background:#0a0d13;
+      backdrop-filter: blur(8px) saturate(1.10);
+      transition:box-shadow .3s;
+    }
+
+    .page-bg{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter:brightness(.78) contrast(1.08) saturate(1.12); /* Görsel daha parlak ve canlı */
+      transform:scale(1.02);
+    }
+
+    .page-overlay{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(7,10,16,.38) 0%, rgba(7,10,16,.32) 18%, rgba(7,10,16,.44) 48%, rgba(7,10,16,.62) 100%),
+        linear-gradient(90deg, rgba(11,14,21,.62) 0%, rgba(11,14,21,.38) 40%, rgba(11,14,21,.48) 100%),
+        radial-gradient(ellipse at top center, rgba(255,231,176,0.10) 0%, rgba(255,231,176,0.00) 70%);
+      pointer-events:none;
+      z-index:1;
+    }
+
+    .page-content{
+      position:relative;
+      z-index:2;
+      max-width:860px;
+      padding:42px 38px 54px;
+    }
+
+    .page-title{
+      margin:0 0 18px;
+      font-size:clamp(44px, 5vw, 72px); /* Daha büyük ve sinematik */
+      line-height:1.08;
+      font-weight:900;
+      color:#ffe7b0;
+      text-shadow:0 0 24px #d9b46b99, 0 2px 10px #000a, 0 0 2px #fff8;
+      letter-spacing:-.4px;
+      filter: drop-shadow(0 0 12px #d9b46b66);
+    }
+    .page-subtitle{
+      margin:26px 0 12px;
+      font-size:clamp(24px, 2.5vw, 38px);
+      line-height:1.15;
+      font-weight:800;
+      color:var(--gold);
+      text-shadow:0 0 18px #d9b46b88, 0 2px 10px #000a;
+      filter: drop-shadow(0 0 8px #d9b46b55);
+    }
+
+    .page-content p{
+      margin:0 0 16px;
+      font-size:clamp(18px, 1.25vw, 28px);
+      line-height:1.72;
+      color:#f1f4fb;
+      text-shadow:0 1px 4px rgba(0,0,0,.32);
+    }
+
+    .page-content .author{
+      margin-top:28px;
+      font-weight:700;
+      color:#f7f8fb;
+    }
+
+    .page-content .author-role{
+      font-family:Arial, Helvetica, sans-serif;
+      color:#d8deea;
+      font-size:15px;
+      letter-spacing:.2px;
+    }
+
+    .viewer-footer{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:14px 22px 20px;
+      border-top:1.5px solid var(--line);
+      background:linear-gradient(0deg,rgba(255,255,255,.04),rgba(255,255,255,0));
+      box-shadow:0 -2px 18px 0 rgba(217,180,107,0.06);
+      backdrop-filter: blur(2.5px);
+    }
+
+    .viewer-footer .nav-btn{
+      min-width:110px;
+      border:none;
+      border-radius:14px;
+      padding:15px 26px;
+      font-weight:800;
+      font-size:20px;
+      cursor:pointer;
+      color:#ffe7b0;
+      background:linear-gradient(180deg,#181818 0%, #232323 100%);
+      border:2px solid #d9b46b44;
+      box-shadow:0 0 0 #0000;
+      transition:.18s;
+      letter-spacing:.5px;
+      text-shadow:0 0 10px #d9b46b33;
+    }
+    .viewer-footer .nav-btn:hover:not(:disabled){
+      background:linear-gradient(180deg,#ffe7b0 0%, #d9b46b 100%);
+      color:#181818;
+      border-color:#ffe7b0;
+      box-shadow:0 0 22px #ffe7b099, 0 0 2px #fff8;
+      filter: drop-shadow(0 0 10px #d9b46b55);
+    }
+    .viewer-footer .nav-btn:disabled{
+      opacity:.45;
+      cursor:not-allowed;
+    }
+
+    .counter{
+      font-family:Arial, Helvetica, sans-serif;
+      color:#e9eef9;
+      font-weight:800;
+      font-size:18px;
+      letter-spacing:.8px;
+    }
+
+    @media (max-width: 980px){
+      .shell{
+        grid-template-columns:1fr;
+      }
+      .side-nav{
+        position:static;
+        display:flex;
+        gap:8px;
+        padding:10px;
+        overflow:auto;
+      }
+      .side-nav button{
+        min-width:56px;
+        margin:0;
+      }
+      .page{
+        min-height:auto;
+      }
+      .page-content{
+        padding:26px 22px 34px;
+      }
+      .page-title{
+        font-size:34px;
+      }
+      .page-content p{
+        font-size:17px;
+        line-height:1.66;
+      }
+      /* Mobilde overlay daha şeffaf, arka plan daha görünür */
+      .page-overlay{
+        background:
+          linear-gradient(180deg, rgba(7,10,16,.22) 0%, rgba(7,10,16,.18) 18%, rgba(7,10,16,.28) 48%, rgba(7,10,16,.44) 100%),
+          linear-gradient(90deg, rgba(11,14,21,.32) 0%, rgba(11,14,21,.18) 40%, rgba(11,14,21,.28) 100%);
+      }
+      .page-bg{
+        filter:brightness(.86) contrast(1.12) saturate(1.16);
+      }
+    }
+
+    @media (max-width: 640px){
+      .viewer-header{
+        padding:16px 16px 12px;
+        gap:10px;
+      }
+      .brand-pill{
+        font-size:13px;
+        padding:8px 12px;
+      }
+      .date{
+        font-size:12px;
+      }
+      .page-wrap{
+        padding:14px 14px 10px;
+      }
+      .page-title{
+        font-size:30px;
+      }
+      .page-subtitle{
+        font-size:22px;
+      }
+      .page-content p{
+        font-size:16px;
+      }
+      .viewer-footer{
+        padding:12px 14px 16px;
+      }
+      .viewer-footer .nav-btn{
+        min-width:92px;
+        padding:10px 12px;
+      }
+      .counter{
+        font-size:16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="side-nav" id="sideNav"></aside>
+
+    <main class="viewer">
+      <div class="viewer-header">
+        <div class="brand-pill">Bister Bilal Borsa Akademi</div>
+        <div class="date">14.03.2026</div>
+      </div>
+
+      <div class="page-wrap">
+        <section class="page">
+          <img id="pageBg" class="page-bg" src="" alt="">
+          <div class="page-overlay"></div>
+          <div id="pageContent" class="page-content"></div>
+        </section>
+      </div>
+
+      <div class="viewer-footer">
+        <button class="nav-btn" id="prevBtn">Önceki</button>
+        <div class="counter" id="counter">1 / 7</div>
+        <button class="nav-btn" id="nextBtn">Sonraki</button>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const pages = [
+      {
+        bg: "page1-bg.png",
+        html: `
+          <h1 class="page-title">Ortadoğu'da Ateş Çemberi: Görünen Savaşın Ardındaki Petrodolar Hesaplaşması</h1>
+          <p>Son günlerde Ortadoğu'da yaşananlar, ilk bakışta ABD-İsrail ittifakı ile İran arasında bir savaş gibi görünüyor. Fakat yangının haritasına dikkatlice bakınca, asıl acıyı çekenin İran olmadığı anlaşılıyor.</p>
+          <p>Alevlerin yükseldiği ülkeler: Suudi Arabistan, Birleşik Arap Emirlikleri (BAE), Katar, Kuveyt, Bahreyn. Yani ABD'nin onlarca yıldır "müttefikim" dediği Körfez ülkeleri. Herkes bu savaşın taraflarını konuşurken, asıl çarpıcı tablo gözden kaçıyor: Bir ülke kendi müttefiklerini mi yakıyor? Bu soru, olayı anlamak için doğru anahtar.</p>
+          <h2 class="page-subtitle">Petrodoların 50 Yıllık Saltanatı</h2>
+          <p>Hikaye 1974'e, Henry Kissinger ile Suudi Kralı Faysal arasında yapılan gizli bir anlaşmaya dayanır. Dünya petrol ticareti yalnızca Amerikan doları üzerinden yapılacak, karşılığında ise ABD, Suudi Arabistan'ın güvenliğini garanti edecekti. Bu basit ama güçlü formül, küresel ekonomiyi yarım asır boyunca şekillendirdi.</p>
+          <p>Bu sistemi bir mahalle bakkalı gibi düşünün: Mahallenin en güçlü adamı gelir ve "Burada herkes sadece benim bastığım kağıtlarla alışveriş yapacak" kuralını koyar. Karşılığında da sizi koruyacağını söyler. İşte petrodolar sistemi tam olarak budur. Petrol almak isteyen her ülke, önce dolar almak zorunda kalır. Bu sayede dünyanın dört bir yanı dolar biriktirir, ABD ise hiç bitmeyen bir talep ve borçlanma gücü elde eder.</p>
+        `
+      },
+      {
+        bg: "page2-bg.png",
+        html: `
+          <p>Peki ya biri bu sisteme meydan okursa? İşte asıl tehlike o zaman başlar. Saddam Hüseyin 2000 yılında Irak petrolünü dolardan euroya çevirdiğinde, aslında "Petrol dolardan başka parayla da satılabilir" gibi son derece tehlikeli bir fikri dünyaya yaydı. Bu fikir, kitle imha silahlarından daha bulaşıcı ve yıkıcıydı.</p>
+          <p>ABD'nin 2003'te Irak'ı işgal gerekçesi "kitle imha silahları" olsa da, işgalden sonra yapılan ilk işlerden biri petrol satışlarını sessizce tekrar dolara bağlamak oldu. Dünyaya verilen mesaj açıktı: Petrodolardan çıkan yanar.</p>
+          <h2 class="page-subtitle">Müttefik İsyanı: Beşli Sapma</h2>
+          <p>Bu tehdit 20 yıl boyunca işe yaradı. Ta ki aynı anda beş ülke birden sessiz sedasız sistemin dışına adım atana kadar.</p>
+          <p>2021: ABD'nin baş düşmanı İran, petrolünün %90'ını yuan ile satmaya başladı.</p>
+          <p>2023: Suudi Arabistan, Çin'le devasa bir swap anlaşması yaparak ödemelerinin önemli bir kısmını yuana kaydırdı ve ilk dijital yuan ile petrol satışı gerçekleşti.</p>
+          <p>2023: Katar, Çin'le 27 yıllık dev bir doğalgaz anlaşması imzaladı.</p>
+          <p>2024: BAE ve Suudi Arabistan, ABD merkezli sistemlere alternatif olarak görülen BRICS'e katıldı.</p>
+          <p>2024: Bahreyn de aynı yola girerek BRICS'e başvurdu.</p>
+          <p>10 yıl önce neredeyse tamamen dolar üzerinden dönen petrol ticareti, 2024 itibarıyla %20 oranında dolar dışına kaymıştı. İşte bu, Washington için kırmızı çizgiydi. Ancak sorun şuydu: Artık sistemden sapan Saddam gibi tek bir "düşman" değil, aynı zamanda ABD'nin 50 yıllık en sadık müttefikleriydi. Üzerlerinde onlarca askeri üssü olan, trilyonluk silah anlaşmaları yaptığı ülkelerdi.</p>
+          <h2 class="page-subtitle">Yeni Yöntem, Eski Formül: Vekalet Ateşi</h2>
+          <p>Irak'ı işgal ettiğiniz gibi Suudi Arabistan'ı işgal edemezsiniz. O halde ne yaparsınız? Bölgeyi, bu müttefikleri birbirine düşürecek şekilde ateşe verirsiniz.</p>
+          <p>ABD ve İsrail'in İran'a yönelik operasyonları, tam da bu noktada devreye girdi. İran'ın misillemesi ise doğrudan ABD'yi değil, ABD'nin bu "sadakatsiz" müttefiklerini hedef aldı. Ve vurulan noktalar son derece manidardı:</p>
+        `
+      },
+      {
+        bg: "page3-bg.png",
+        html: `
+          <p>Suudi Arabistan'ın Çin'le swap anlaşması yapan dev petrol tesisi Aramco vuruldu.</p>
+          <p>BRICS'e katılan BAE'nin göz bebeği Dubai Havalimanı ve veri merkezleri hedef oldu.</p>
+          <p>Çin'le LNG anlaşması imzalayan Katar'ın dünyanın en büyük doğalgaz tesisi Ras Laffan kapandı.</p>
+          <p>Çin'in Kuşak-Yol projesinde yer alan Kuveyt'in enerji altyapısı yanıp kül oldu.</p>
+          <p>Sonuçta asıl darbe, zaten yaptırım altındaki İran'a değil, küresel ticaretin merkezindeki Körfez ülkelerine indi. Yöntem değişmişti: Artık doğrudan işgal yerine, bölgesel bir aktör (İran) üzerinden müttefiklere "aklını başına toplatma" operasyonu düzenleniyordu.</p>
+          <h2 class="page-subtitle">Tesadüf mü, Plan mı?</h2>
+          <p>Bu tabloyu tamamlayan bir başka gelişme ise Venezuela oldu. Şubat 2026'da ABD, Venezuela lideri Maduro'yu yakalayıp ülkede kontrolü ele geçirdi. Hemen ardından Chevron, BP gibi dev şirketlere Venezuela'nın hasarlı petrol altyapısını onarma lisansı verildi. Birkaç hafta sonra ise Ortadoğu yangın yeriydi.</p>
+          <p>Sıralama tesadüf olamayacak kadar nettir: Önce dünyanın en büyük petrol rezervlerine sahip Venezuela'da kontrol sağlanır. Ardından Ortadoğu'nun enerji altyapısı vurulur. Bu sayede ABD, hem kendi şirketlerine yeni bir pazar açar hem de dolardan sapan müttefiklerini cezalandırırken küresel enerji arzını kontrol altında tutar.</p>
+          <h2 class="page-subtitle">Savaşın Gerçek Hedefleri</h2>
+          <p>Bu çatışma, tek bir ülkeye karşı yürütülen basit bir savaş değildir. Aynı anda iki stratejik hedefe birden hizmet eder:</p>
+          <p>Çin'in Enerji Kemerini Kırmak: İran, Körfez ülkeleri üzerinden dolanan enerji hatları, Çin'in Kuşak-Yol projesinin can damarıdır. Bu hatları vurmak, Çin'in küresel ticaret ağını ve enerji güvenliğini zayıflatır.</p>
+          <p>Müttefikleri Cezalandırmak ve Hizaya Sokmak: Dolardan sapan müttefiklere, altyapılarını yakarak verilen mesaj çok açıktır: "Bu oyundan çıkmanın bedeli ağır olur."</p>
+        `
+      },
+      {
+        bg: "page4-bg.png",
+        html: `
+          <p>Körfez ülkelerinin artık kendilerine sorması gereken soru şudur: "ABD bizi koruyorsa, neden tesislerimiz yanıyor? Bu koruma mı, yoksa açık bir ceza mı?"</p>
+          <p>26 yıldır formül değişmiyor:</p>
+          <p>2000: Saddam dolardan çıktı → 2003: Irak işgal edildi, petrol dolara döndü.</p>
+          <p>2021-2024: 4 Körfez ülkesi Çin'e kaydı → 2026: Bölge ateşe verildi.</p>
+          <p>Saddam düşmandı, doğrudan vuruldu. Müttefikler ise İran üzerinden dolaylı yoldan vuruluyor. Yöntem değişti, ama formül aynı: Petrodoların bekası için her bedel ödenir.</p>
+          <h2 class="page-subtitle">🛡️ Savaş Atmosferinde Güvende Kalmak: Temkinli Yatırımcının El Kitabı</h2>
+          <p>Peki tüm bu yangının ortasında sıradan bir insan, birikimini ve geleceğini nasıl korur? Teknik analizlerden, kısa vadeli fiyat hareketlerinden önce gelmesi gereken şey sağduyudur. Bu atmosferde temkinli bir yatırımcının profili şöyle olmalıdır:</p>
+          <p><strong>1. Önce Güvenlik, Sonra Getiri</strong></p>
+          <p>Savaş ortamı, "yüksek risk, yüksek getiri" mantığını askıya alır. Bu dönemde yapılacak en büyük hata, "fırsat" diyerek risk iştahını artırmaktır. Oysa tarih gösteriyor ki, jeopolitik krizlerde ilk kural anaparayı korumaktır. Kaybetmeyi göze alamayacağınız parayla risk almayın.</p>
+          <p><strong>2. Dolar: Kısa Vadede Sığınak, Uzun Vadede Soru İşareti</strong></p>
+          <p>Petrodolar sistemi şu an için ayakta ve ABD bu uğurda savaşmayı göze alıyor. Bu, kısa vadede doları en güvenli limanlardan biri haline getiriyor. Ancak unutmayın: Bir imparatorluk, sınırlarını korumak için savaşmak zorunda kaldığında, aslında zayıfladığını gösterir. Bu savaş, doların sonsuza kadar tahtında kalacağı anlamına gelmez. Aksine, sistemin kırılganlaştığının en büyük kanıtıdır. Bu nedenle tüm yumurtaları tek sepete koymayın.</p>
+        `
+      },
+      {
+        bg: "page5-bg.png",
+        html: `
+          <p><strong>3. Altın ve Gümüş: Eski Ama Asla Eskimeyen Sigorta</strong></p>
+          <p>Teknik olarak dolar baskısı altında kalsa da, altın binlerce yıldır paranın ta kendisidir. Bankaların çökebildiği, kağıt paraların değer kaybedebildiği, hatta devletlerin iflas edebildiği bir dünyada altın fiziksel olarak cebinizde taşıyabileceğiniz tek uluslararası para birimidir. Gümüş de benzer şekilde, hem tarihsel para birimi hem de sanayinin vazgeçilmezi olarak iki yönlü koruma sağlar. Portföyünüzde yüzde 10-20 oranında fiziki altın ve gümüş bulundurmak, sistem çökerse değil, sistem sarsılırsa ayakta kalmanızı sağlar.</p>
+          <p><strong>4. Borçtan Kaçının, Nakiti Elde Tutun</strong></p>
+          <p>Kriz dönemlerinde nakit akışı her şeyden önemlidir. İşini kaybetme, kiranın ödenememe, beklenmedik masraflar derken, borçlu bir hane krizden en ağır yarayı alır. Mümkün olduğunca tüketici kredilerinden, kredi kartı borçlarından uzak durun. Elde bir miktar döviz (USD, EUR, CHF) ve bir miktar altın ile "acil durum fonu" oluşturun. Bu fon, en az 6 aylık temel ihtiyaçlarınızı karşılayacak büyüklükte olmalı.</p>
+          <p><strong>5. Gıda ve Temel İhtiyaç Güvenliği</strong></p>
+          <p>Savaş, tedarik zincirlerini vurur. Petrol fiyatları yükseldiğinde, nakliye maliyetleri artar ve bu eninde sonunda market raflarına yansır. Enflasyonun kontrolden çıktığı bir ortamda, temel gıda maddelerinde stokçuluk yapmadan ama makul bir planlamayla hareket etmek akıllıcadır. Uzun ömürlü gıdaları, temizlik malzemelerini ve ilaçları tedariğini önceden düşünmek, psikolojik rahatlık sağlar.</p>
+          <p><strong>6. Psikolojik Korunma: Panik Satışı Yapma</strong></p>
+          <p>Piyasalar düştüğünde panikleyip satanlar, asıl kaybı yaşayanlardır. Bu dönemde yapılacak en büyük hatalardan biri, televizyondaki her haberle pozisyon değiştirmektir. Uzun vadeli bir bakış açısına sahip olun. Krizler gelir ve geçer. Önemli olan, kriz geçtiğinde hâlâ masada olabilmektir.</p>
+          <p><strong>Özetle:</strong></p>
+          <p>Bu atmosferde güvende kalmak, zengin olmaktan daha önemlidir. Temkinli yatırımcı, bu dönemde birikimlerini dolar, altın, gümüş, euro ve hatta İsviçre frangı gibi farklı sepetlere yayar. Borçsuzdur, nakiti vardır, evinde temel ihtiyaçları tamdır ve en önemlisi, kafası ve yüreği soğukkanlıdır. Çünkü en büyük sermaye, paniklemeyen bir akıldır.</p>
+          <p class="author">BİLAL AKSOY</p>
+          <p class="author-role">Kurucu & Baş Analist</p>
+        `
+      }
+    ];
+
+    let currentPage = 0;
+
+    const pageBg = document.getElementById("pageBg");
+    const pageContent = document.getElementById("pageContent");
+    const counter = document.getElementById("counter");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const sideNav = document.getElementById("sideNav");
+
+    function renderSideNav() {
+      sideNav.innerHTML = "";
+      pages.forEach((_, index) => {
+        const btn = document.createElement("button");
+        btn.textContent = index + 1;
+        if (index === currentPage) btn.classList.add("active");
+        btn.addEventListener("click", () => {
+          currentPage = index;
+          renderPage();
+        });
+        sideNav.appendChild(btn);
+      });
+    }
+
+    function renderPage() {
+      const page = pages[currentPage];
+      pageBg.src = page.bg;
+      pageContent.innerHTML = page.html;
+      counter.textContent = `${currentPage + 1} / ${pages.length}`;
+      prevBtn.disabled = currentPage === 0;
+      nextBtn.disabled = currentPage === pages.length - 1;
+      renderSideNav();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    prevBtn.addEventListener("click", () => {
+      if (currentPage > 0) {
+        currentPage--;
+        renderPage();
+      }
+    });
+
+    nextBtn.addEventListener("click", () => {
+      if (currentPage < pages.length - 1) {
+        currentPage++;
+        renderPage();
+      }
+    });
+
+    renderPage();
+  </script>
+</body>
+</html>
