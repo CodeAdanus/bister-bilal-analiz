@@ -66,10 +66,17 @@
 
     .viewer{
       background:linear-gradient(180deg,rgba(28,24,45,.92),rgba(18,20,27,.96));
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:26px;
-      box-shadow:0 0 60px rgba(123,88,255,.10), 0 0 30px rgba(217,180,107,.08);
+      border:1.5px solid rgba(255,255,255,.13);
+      border-radius:32px;
+      box-shadow:
+        0 8px 48px 0 rgba(217,180,107,0.18),
+        0 2px 32px 0 rgba(127,215,255,0.10),
+        0 0 0 2.5px rgba(255,255,255,0.04),
+        0 0 120px 0 rgba(123,88,255,0.10);
       overflow:hidden;
+      backdrop-filter: blur(10px) saturate(1.08);
+      position:relative;
+      transition:box-shadow .3s;
     }
 
     .viewer-header{
@@ -77,8 +84,12 @@
       justify-content:space-between;
       align-items:center;
       padding:20px 26px 16px;
-      border-bottom:1px solid var(--line);
-      background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0));
+      border-bottom:1.5px solid var(--line);
+      background:
+        linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,0)),
+        linear-gradient(90deg,rgba(217,180,107,0.06) 0%,rgba(255,255,255,0) 100%);
+      box-shadow:0 2px 18px 0 rgba(217,180,107,0.06);
+      backdrop-filter: blur(2.5px);
     }
 
     .brand-pill, .brand{
@@ -109,13 +120,19 @@
 
     .page{
       min-height:920px;
-      border-radius:20px;
+      border-radius:24px;
       overflow:hidden;
       position:relative;
-      border:2.5px solid var(--gold-soft); // Gold/copper border biraz daha belirgin
-      box-shadow:inset 0 0 0 1.5px #d9b46b33, 0 0 32px #d9b46b22, 0 0 60px #7fd7ff18;
+      border:2.5px solid var(--gold-soft);
+      box-shadow:
+        0 0 0 2.5px #d9b46b33 inset,
+        0 0 32px #d9b46b33 inset,
+        0 0 60px #7fd7ff18 inset,
+        0 0 44px 0 rgba(217,180,107,0.13),
+        0 2px 24px 0 rgba(127,215,255,0.08);
       background:#0a0d13;
-      backdrop-filter: blur(7px) saturate(1.08); /* Hafif cam efekti, premium derinlik */
+      backdrop-filter: blur(8px) saturate(1.10);
+      transition:box-shadow .3s;
     }
 
     .page-bg{
@@ -133,8 +150,10 @@
       inset:0;
       background:
         linear-gradient(180deg, rgba(7,10,16,.38) 0%, rgba(7,10,16,.32) 18%, rgba(7,10,16,.44) 48%, rgba(7,10,16,.62) 100%),
-        linear-gradient(90deg, rgba(11,14,21,.62) 0%, rgba(11,14,21,.38) 40%, rgba(11,14,21,.48) 100%);
+        linear-gradient(90deg, rgba(11,14,21,.62) 0%, rgba(11,14,21,.38) 40%, rgba(11,14,21,.48) 100%),
+        radial-gradient(ellipse at top center, rgba(255,231,176,0.10) 0%, rgba(255,231,176,0.00) 70%);
       pointer-events:none;
+      z-index:1;
     }
 
     .page-content{
@@ -191,7 +210,10 @@
       align-items:center;
       gap:12px;
       padding:14px 22px 20px;
-      border-top:1px solid var(--line);
+      border-top:1.5px solid var(--line);
+      background:linear-gradient(0deg,rgba(255,255,255,.04),rgba(255,255,255,0));
+      box-shadow:0 -2px 18px 0 rgba(217,180,107,0.06);
+      backdrop-filter: blur(2.5px);
     }
 
     .viewer-footer .nav-btn{
